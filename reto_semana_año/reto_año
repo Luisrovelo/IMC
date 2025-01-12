@@ -1,0 +1,36 @@
+def obtener_año(mensaje):
+    while True:
+        try:
+            año = int(input(mensaje))
+            return año
+        except ValueError:
+            print("Por favor, ingrese un año válido.")
+
+def calcular_años(año_actual, año_ingresado):
+    if año_ingresado < año_actual:
+        años_pasados = año_actual - año_ingresado
+        if años_pasados == 1:
+            return f"Desde el año {año_ingresado} ha pasado 1 año."
+        else:
+            return f"Han pasado {años_pasados} años desde el año que has introducido."
+    elif año_ingresado > año_actual:
+        años_faltantes = año_ingresado - año_actual
+        if años_faltantes == 1:
+            return f"Para llegar a {año_ingresado} hace falta 1 año."
+        else:
+            return f"Faltan {años_faltantes} años para llegar al año que has introducido."
+    else:
+        return "Has introducido el mismo año que el actual."
+
+def main():
+    while True:
+        año_actual = obtener_año("Introduce el año actual: ")
+        año_ingresado = obtener_año("Introduce otro año para calcular: ")
+        resultado = calcular_años(año_actual, año_ingresado)
+        print(resultado)
+        respuesta = input("¿Desea calcular otro año? (1 = sí, 2 = no): ")
+        if respuesta == "2":
+            break
+
+if __name__ == "__main__":
+    main()
